@@ -1,0 +1,154 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDialogOpen": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chain": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chain": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chain": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chain": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chain": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSave": {
+      "chains": [
+        {
+          "chain": "spSaveChain"
+        }
+      ]
+    },
+    "ojSpSubmit": {
+      "chains": [
+        {
+          "chain": "spSubmitChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chain": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-92-icoSimpleCreateAndEdit48Svg"
+  }
+}

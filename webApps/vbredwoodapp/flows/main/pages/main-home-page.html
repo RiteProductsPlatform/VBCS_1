@@ -1,0 +1,18 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" page-title="New Page" page-subtitle="Page Subtitle"
+    avatar="{{$page.variables.avatar}}"
+    primary-action.disabled="{{!($page.variables.primaryAlwaysOn || ($page.variables.dirtyDataFlag ? true : $page.variables.isSaved))}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" display-options.responsive-padding="on"
+    on-sp-cancel="[[$listeners.ojSpCancel]]" on-sp-save="[[$listeners.ojSpSave]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]" on-sp-primary-action="[[$listeners.ojSpSubmit]]" 
+  >
+    <oj-dynamic-form slot="main" valid="{{$page.variables.formState}}"
+      on-transient-value-changed="[[$listeners.ojdynamicFormTransientValueChangeChain]]"></oj-dynamic-form>
+  </oj-sp-simple-create-edit>
+  <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog" open-dialog="[[ $page.variables.dirtyDialogOpen ]]"
+    on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]" on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes>
+</div>
