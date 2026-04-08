@@ -1,0 +1,9 @@
+{
+  "services": {
+    "EmployeeService": {
+      "id": "EmployeeService",
+      "type": "openapi3",
+      "path": "EmployeeService/openapi3.json"
+    }
+  }
+}

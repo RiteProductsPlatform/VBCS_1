@@ -1,0 +1,44 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" page-title="New Page" page-subtitle="Rite Softwares"
+    avatar="{{$page.variables.avatar}}"
+    primary-action.disabled="{{!($page.variables.primaryAlwaysOn || ($page.variables.dirtyDataFlag ? true : $page.variables.isSaved))}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" display-options.responsive-padding="on"
+    on-sp-cancel="[[$listeners.ojSpCancel]]" on-sp-save="[[$listeners.ojSpSave]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]" on-sp-primary-action="[[$listeners.ojSpSubmit]]">
+    <oj-form-layout slot="main" max-columns="2" direction="row" label-edge="top">
+      <oj-input-text id="emp_id" label-hint="EMP ID" value="{{ $page.variables.employeeVar.empid }}"></oj-input-text>
+      <oj-input-text id="emp_name" label-hint="EMP NAME"
+        value="{{ $page.variables.employeeVar.empname }}"></oj-input-text>
+      <oj-input-text id="emp_email" label-hint="EMP EMAIL"
+        value="{{ $page.variables.employeeVar.empemail }}"></oj-input-text>
+      <oj-input-text id="emp_supervisor" label-hint="EMP SUPERVISOR"
+        value="{{ $page.variables.employeeVar.empsupervisor }}"></oj-input-text>
+      <oj-select-single id="emp_designation" label-hint="EMP DESIGNATION" data="[[ $page.variables.designationDP ]]"
+        value="{{ $page.variables.employeeVar.empdesignation }}" item-text="label"></oj-select-single>
+      <oj-select-single id="emp_status" label-hint="EMP STATUS" data="[[ $page.variables.statusDP ]]"
+        value="{{ $page.variables.employeeVar.empstatus }}" item-text="label"></oj-select-single>
+      <oj-input-text id="emp_tot_exp" label-hint="EMP TOTAL EXP"
+        value="{{ $page.variables.employeeVar.emptotexp }}"></oj-input-text>
+      <oj-input-text id="emp_grade" label-hint="EMP GRADE"
+        value="{{ $page.variables.employeeVar.empgrade }}"></oj-input-text>
+    </oj-form-layout>
+    <oj-table id="employeeTable" slot="main" data="[[ $page.variables.employeeADP ]]" columns='[
+        {"headerText":"EMP ID","field":"empid"},
+        {"headerText":"EMP NAME","field":"empname"},
+        {"headerText":"EMP EMAIL","field":"empemail"},
+        {"headerText":"EMP SUPERVISOR","field":"empsupervisor"},
+        {"headerText":"EMP DESIGNATION","field":"empdesignation"},
+        {"headerText":"EMP STATUS","field":"empstatus"},
+        {"headerText":"EMP TOTAL EXP","field":"emptotexp"},
+        {"headerText":"EMP GRADE","field":"empgrade"}
+      ]' selection-mode.row="single" class="oj-sm-margin-4x-top">
+    </oj-table>
+  </oj-sp-simple-create-edit>
+  <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog" open-dialog="[[ $page.variables.dirtyDialogOpen ]]"
+    on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]"
+    on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes>
+</div>

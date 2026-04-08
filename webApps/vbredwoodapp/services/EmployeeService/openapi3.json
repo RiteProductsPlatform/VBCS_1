@@ -1,0 +1,115 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "EmployeeService",
+    "version": "1.0.0",
+    "x-vb-backend-type": "ords"
+  },
+  "servers": [
+    {
+      "url": "http://129.153.17.160:8080/ords/rite/employeeInfo/"
+    }
+  ],
+  "paths": {
+    "/getsaveemployee": {
+      "get": {
+        "operationId": "getEmployees",
+        "responses": {
+          "default": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetemployeeResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-vb": {
+          "actionHint": "getMany"
+        }
+      },
+      "post": {
+        "operationId": "createEmployee",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEmployeeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeItem"
+                }
+              }
+            }
+          }
+        },
+        "x-vb": {
+          "actionHint": "create"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetemployeeResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmployeeItem"
+            }
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "CreateEmployeeRequest": {
+        "type": "object",
+        "properties": {
+          "empid": { "type": "string" },
+          "empname": { "type": "string" },
+          "empemail": { "type": "string" },
+          "empsupervisor": { "type": "string" },
+          "empdesignation": { "type": "string" },
+          "empstatus": { "type": "string" },
+          "emptotexp": { "type": "string" },
+          "empgrade": { "type": "string" }
+        }
+      },
+      "EmployeeItem": {
+        "type": "object",
+        "properties": {
+          "empid": { "type": "string" },
+          "empname": { "type": "string" },
+          "empemail": { "type": "string" },
+          "empsupervisor": { "type": "string" },
+          "empdesignation": { "type": "string" },
+          "empstatus": { "type": "string" },
+          "emptotexp": { "type": "string" },
+          "empgrade": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+
+  "id": "main",
+  "description": "Flow main",
+  "defaultPage": "main-simple-create",
+  "chains": {},
+  "types": {},
+  "variables": {}
+}
