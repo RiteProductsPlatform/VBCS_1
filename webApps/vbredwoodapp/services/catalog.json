@@ -1,0 +1,7 @@
+{
+  "services": {
+    "EmployeeService": {
+      "definition": "EmployeeService/openapi3.json"
+    }
+  }
+}
